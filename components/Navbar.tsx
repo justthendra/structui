@@ -82,7 +82,7 @@ export default function Navbar() {
           </Link>
 
           <a
-            href="https://discord.gg/structui"
+            href="https://discord.gg/MdQqack6Jb"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex h-10 md:h-11 px-2.5 md:px-3.5 py-2 bg-neutral-100 hover:bg-neutral-200/80 transition-colors rounded-xl justify-center items-center gap-1.5 md:gap-2 cursor-pointer no-underline flex-shrink-0"
