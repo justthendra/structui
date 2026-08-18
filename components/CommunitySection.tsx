@@ -23,7 +23,7 @@ const DEFAULT_SERVER_DATA: DiscordGuildData = {
   name: "StructUI",
   description:
     "The official home for code builders, UI/UX engineers, and creators building modern web components with StructUI.",
-  icon: "https://cdn.discordapp.com/icons/1539313350863749171/58b6bb2b5fa01df7b93f9347166c8c72.png?size=256",
+  icon: "https://cdn.discordapp.com/icons/1539313350863749171/58b6bb2b5fa01df7b93f9347166c8c72.webp?size=80",
   banner: null,
   approximate_member_count: 2,
   approximate_presence_count: 2,
