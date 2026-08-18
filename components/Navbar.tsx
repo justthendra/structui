@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { FaDiscord } from "react-icons/fa6";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -33,33 +34,30 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-1.5">
             <Link
               href="/explore"
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
-                pathname === "/explore"
-                  ? "bg-neutral-100 text-[#3D38E9]"
-                  : "text-zinc-600 hover:text-[#202020] hover:bg-neutral-50"
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${pathname === "/explore"
+                ? "bg-neutral-100 text-[#3D38E9]"
+                : "text-zinc-600 hover:text-[#202020] hover:bg-neutral-50"
+                }`}
             >
               Explore Marketplace
             </Link>
 
             <Link
               href="/about"
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
-                pathname === "/about"
-                  ? "bg-neutral-100 text-[#3D38E9]"
-                  : "text-zinc-600 hover:text-[#202020] hover:bg-neutral-50"
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${pathname === "/about"
+                ? "bg-neutral-100 text-[#3D38E9]"
+                : "text-zinc-600 hover:text-[#202020] hover:bg-neutral-50"
+                }`}
             >
               About
             </Link>
 
             <Link
               href="/dashboard"
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
-                pathname === "/dashboard"
-                  ? "bg-neutral-100 text-[#3D38E9]"
-                  : "text-zinc-600 hover:text-[#202020] hover:bg-neutral-50"
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${pathname === "/dashboard"
+                ? "bg-neutral-100 text-[#3D38E9]"
+                : "text-zinc-600 hover:text-[#202020] hover:bg-neutral-50"
+                }`}
             >
               Creator Studio
             </Link>
@@ -89,11 +87,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hidden sm:inline-flex h-10 md:h-11 px-2.5 md:px-3.5 py-2 bg-neutral-100 hover:bg-neutral-200/80 transition-colors rounded-xl justify-center items-center gap-1.5 md:gap-2 cursor-pointer no-underline flex-shrink-0"
           >
-            <img
-              src="/teaser/discord_logo.svg"
-              alt="Discord"
-              className="w-5 h-3.5 md:w-5 md:h-3.5 flex-shrink-0"
-            />
+            <FaDiscord className="w-5 h-5" />
             <span className="text-[#202020] text-sm font-medium whitespace-nowrap">
               Discord
             </span>

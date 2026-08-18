@@ -57,7 +57,7 @@ export default function CommunitySection() {
             </a>
 
             <a
-              href="https://github.com"
+              href="https://github.com/justthendra/structui"
               target="_blank"
               rel="noreferrer"
               className="px-6 py-3 bg-white hover:bg-neutral-50 active:scale-[0.98] transition-all rounded-full border border-neutral-300 inline-flex justify-center items-center gap-2 text-[#202020] font-medium font-geist"
