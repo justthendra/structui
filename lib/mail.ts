@@ -1,14 +1,33 @@
 import nodemailer from "nodemailer";
 
-export const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || "smtp.example.com",
-  port: parseInt(process.env.SMTP_PORT || "587"),
-  secure: process.env.SMTP_PORT === "465",
-  auth: {
-    user: process.env.SMTP_USER || "test@example.com",
-    pass: process.env.SMTP_PASS || "password",
-  },
-});
+export function getMailTransporter() {
+  const host = process.env.SMTP_HOST || "smtp.gmail.com";
+  const user = process.env.SMTP_USER || "";
+  const pass = (process.env.SMTP_PASS || "").replace(/\s+/g, "");
+  const port = parseInt(process.env.SMTP_PORT || "587");
+  const secure = port === 465;
+
+  // Optimize for Gmail if host is gmail or user ends with @gmail.com
+  if (host.includes("gmail") || user.endsWith("@gmail.com")) {
+    return nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user,
+        pass,
+      },
+    });
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: {
+      user,
+      pass,
+    },
+  });
+}
 
 export async function sendVerificationEmail(
   toEmail: string,
@@ -57,8 +76,11 @@ export async function sendVerificationEmail(
   `;
 
   try {
+    const transporter = getMailTransporter();
+    const sender = process.env.SMTP_FROM || (process.env.SMTP_USER ? `"structui" <${process.env.SMTP_USER}>` : '"structui" <no-reply@structui.dev>');
+    
     const info = await transporter.sendMail({
-      from: process.env.SMTP_FROM || '"structui" <no-reply@structui.dev>',
+      from: sender,
       to: toEmail,
       subject: "Verify your structui developer account",
       html: htmlContent,
@@ -74,3 +96,4 @@ export async function sendVerificationEmail(
     return { success: true, simulated: true };
   }
 }
+
