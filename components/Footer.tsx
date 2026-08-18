@@ -77,7 +77,7 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-2 font-geist text-xs text-zinc-400">
               <a
-                href="https://discord.gg/structui"
+                href="https://discord.gg/MdQqack6Jb"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-white transition-colors inline-flex items-center gap-1.5"
