@@ -15,9 +15,9 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "structui — The Component Marketplace & Code Ecosystem",
+  title: "structui. — The Component Marketplace & Code Ecosystem",
   description:
-    "structui is the premier marketplace for developers to discover, copy, and monetize production-ready React components, Tailwind templates, and fullstack kits.",
+    "structui. is the premier marketplace for developers to discover, copy, and monetize production-ready React components, Tailwind templates, and fullstack kits.",
   icons: {
     icon: [
       { url: "/icons/structui-icon.svg", type: "image/svg+xml" },
