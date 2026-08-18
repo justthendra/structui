@@ -83,7 +83,7 @@ export default function Footer() {
                 className="hover:text-white transition-colors inline-flex items-center gap-1.5"
               >
                 <span>Discord Server</span>
-                <span className="text-[10px] bg-[#5865F2] text-white px-1.5 py-0.2 rounded font-bold">2.4k</span>
+                <span className="text-[10px] bg-[#5865F2] text-white px-1.5 py-0.2 rounded font-bold">Community</span>
               </a>
               <a
                 href="https://github.com/structui"

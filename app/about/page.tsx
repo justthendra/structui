@@ -109,7 +109,7 @@ export default function AboutPage() {
                 </a>
 
                 <a
-                  href="https://discord.gg/structui"
+                  href="https://discord.gg/MdQqack6Jb"
                   target="_blank"
                   rel="noreferrer"
                   className="px-5 py-2.5 bg-[#5865F2] hover:bg-[#4752C4] text-white text-xs sm:text-sm font-semibold rounded-xl inline-flex items-center gap-2 transition-all shadow-xs"

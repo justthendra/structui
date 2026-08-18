@@ -87,7 +87,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hidden sm:inline-flex h-10 md:h-11 px-2.5 md:px-3.5 py-2 bg-neutral-100 hover:bg-neutral-200/80 transition-colors rounded-xl justify-center items-center gap-1.5 md:gap-2 cursor-pointer no-underline flex-shrink-0"
           >
-            <FaDiscord className="w-5 h-5" />
+            <FaDiscord className="w-5 h-5 text-[#5865F2]" />
             <span className="text-[#202020] text-sm font-medium whitespace-nowrap">
               Discord
             </span>

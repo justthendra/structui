@@ -67,7 +67,7 @@ export default function Hero() {
           >
             <Sparkles className="w-3.5 h-3.5 text-[#3D38E9]" />
             <span className="text-[#202020] text-[13px] font-medium font-geist whitespace-nowrap">
-              <span className="font-extrabold text-[#3D38E9]">structui</span>. — 100% Free &amp; Open-Source UI Ecosystem
+              <span className="font-extrabold text-[#3D38E9]">structui</span> — 100% Free &amp; Open-Source UI Ecosystem
             </span>
           </motion.div>
 

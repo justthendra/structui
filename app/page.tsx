@@ -38,8 +38,8 @@ export default function Home() {
                 url: "https://structui.dev",
                 logo: "https://structui.dev/icons/structui-icon.png",
                 sameAs: [
-                  "https://discord.gg/structui",
-                  "https://github.com",
+                  "https://discord.gg/MdQqack6Jb",
+                  "https://github.com/justthendra/structui",
                   "https://kodikas.org",
                 ],
               },
