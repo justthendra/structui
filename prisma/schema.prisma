@@ -1,0 +1,101 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String   @id @default(cuid())
+  username         String?  @unique
+  email            String?  @unique
+  password_hash    String?
+  name             String?
+  avatar           String?
+  banner           String?
+  title            String?
+  bio              String?
+  location         String?
+  website          String?
+  github_url       String?
+  twitter_url      String?
+  linkedin_url     String?
+  tech_stack       String?
+  role             String   @default("developer")
+  is_banned        Boolean  @default(false)
+  is_verified      Boolean  @default(false)
+  discord_id       String?  @unique
+  discord_username String?
+  discord_avatar   String?
+  email_verified   Boolean  @default(false)
+  created_at       DateTime @default(now())
+  updated_at       DateTime @default(now()) @updatedAt
+
+  snippets            Snippet[]
+  starred_snippets    SnippetStar[]
+  verification_tokens VerificationToken[]
+  following           UserFollow[]        @relation("UserFollows")
+  followers           UserFollow[]        @relation("UserFollowed")
+
+  @@map("users")
+}
+
+model VerificationToken {
+  id         String   @id @default(cuid())
+  user_id    String
+  token      String   @unique
+  expires_at DateTime
+  created_at DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@map("verification_tokens")
+}
+
+model Snippet {
+  id          String   @id @default(cuid())
+  user_id     String
+  title       String
+  description String?
+  code        String
+  language    String   @default("typescript")
+  category    String   @default("React Components")
+  price       Float    @default(0)
+  views_count Int      @default(0)
+  stars_count Int      @default(0)
+  is_featured Boolean  @default(false)
+  tags        String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now()) @updatedAt
+
+  user  User          @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  stars SnippetStar[]
+
+  @@map("snippets")
+}
+
+model SnippetStar {
+  user_id    String
+  snippet_id String
+  created_at DateTime @default(now())
+
+  user    User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  snippet Snippet @relation(fields: [snippet_id], references: [id], onDelete: Cascade)
+
+  @@id([user_id, snippet_id])
+  @@map("snippet_stars")
+}
+
+model UserFollow {
+  follower_id  String
+  following_id String
+  created_at   DateTime @default(now())
+
+  follower  User @relation("UserFollows", fields: [follower_id], references: [id], onDelete: Cascade)
+  following User @relation("UserFollowed", fields: [following_id], references: [id], onDelete: Cascade)
+
+  @@id([follower_id, following_id])
+  @@map("user_follows")
+}
