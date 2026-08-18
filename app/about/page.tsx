@@ -92,7 +92,7 @@ export default function AboutPage() {
               </h2>
 
               <p className="text-zinc-600 text-sm sm:text-base leading-relaxed">
-                structui was founded and engineered under the umbrella of <strong>Kodikas Org (<a href="https://kodikas.org" target="_blank" rel="noreferrer" className="text-[#3D38E9] underline font-semibold">kodikas.org</a>)</strong>.
+                structui was founded and engineered under the umbrella of <strong><a href="https://kodikas.org" target="_blank" rel="noreferrer" className="text-[#3D38E9] underline font-semibold">kodikas.org</a></strong>.
                 Our vision is to eliminate fragmented Gists, bloated libraries, and middleman platform cuts by providing a unified, community-driven marketplace where code authors thrive.
               </p>
 
