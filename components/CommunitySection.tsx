@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FaDiscord } from "react-icons/fa6";
 
 export default function CommunitySection() {
   return (
@@ -49,11 +50,7 @@ export default function CommunitySection() {
               rel="noreferrer"
               className="px-6 py-3 bg-[#3D38E9] hover:bg-[#322DC8] active:scale-[0.98] transition-all rounded-full inline-flex justify-center items-center gap-2.5 shadow-sm shadow-[#3D38E9]/20 text-white font-medium font-geist"
             >
-              <img
-                src="/teaser/discord_logo.svg"
-                alt="Discord"
-                className="w-5 h-4 brightness-0 invert"
-              />
+              <FaDiscord className="w-5 h-5" />
               <span className="whitespace-nowrap">
                 Join our Discord
               </span>
