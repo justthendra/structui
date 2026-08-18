@@ -45,7 +45,7 @@ export default function CommunitySection() {
 
           <div className="flex flex-col sm:flex-row justify-start items-stretch sm:items-center gap-3 mt-2 w-full sm:w-auto">
             <a
-              href="https://discord.gg/structui"
+              href="https://discord.gg/MdQqack6Jb"
               target="_blank"
               rel="noreferrer"
               className="px-6 py-3 bg-[#3D38E9] hover:bg-[#322DC8] active:scale-[0.98] transition-all rounded-full inline-flex justify-center items-center gap-2.5 shadow-sm shadow-[#3D38E9]/20 text-white font-medium font-geist"
