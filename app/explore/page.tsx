@@ -95,7 +95,7 @@ export default function ExplorePage() {
         origin: { y: 0.8 },
         colors: ["#3D38E9", "#06B6D4", "#10B981"],
       });
-    } catch {}
+    } catch { }
     setTimeout(() => setCopiedId(null), 2500);
   };
 
@@ -136,7 +136,7 @@ export default function ExplorePage() {
       <Navbar />
 
       {/* Hero Header */}
-      <section className="relative bg-[#F7F7F7] dark:bg-zinc-950/70 border-b border-neutral-200/80 dark:border-zinc-800/80 pt-16 pb-12 px-6 overflow-hidden">
+      <section className="relative bg-[#F7F7F7] dark:bg-zinc-950/70 border-b border-neutral-200/80 mt-16 dark:border-zinc-800/80 pt-16 pb-12 px-6 overflow-hidden">
         <div className="absolute inset-0 hero-dot-pattern opacity-60 pointer-events-none" />
 
         <div className="max-w-[1100px] mx-auto text-center relative z-10 flex flex-col items-center">
@@ -188,11 +188,10 @@ export default function ExplorePage() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat === "All" ? "all" : cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all whitespace-nowrap cursor-pointer shadow-2xs ${
-                    active
+                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all whitespace-nowrap cursor-pointer shadow-2xs ${active
                       ? "bg-[#202020] dark:bg-white text-white dark:text-zinc-900 shadow-xs"
                       : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-[#202020] dark:hover:text-white border border-neutral-200/80 dark:border-zinc-800 hover:bg-neutral-50 dark:hover:bg-zinc-800"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -328,11 +327,10 @@ export default function ExplorePage() {
                           <button
                             type="button"
                             onClick={(e) => handleCopyCode(snippet.id, snippet.code, e)}
-                            className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                              isCopied
+                            className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${isCopied
                                 ? "bg-emerald-600 text-white"
                                 : "bg-[#3D38E9] hover:bg-[#322DC8] text-white shadow-xs"
-                            }`}
+                              }`}
                           >
                             {isCopied ? (
                               <>
@@ -500,11 +498,10 @@ export default function ExplorePage() {
                 <button
                   type="button"
                   onClick={() => handleCopyCode(activeSnippet.id, activeSnippet.code)}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-semibold font-geist transition-all inline-flex items-center gap-2 cursor-pointer ${
-                    copiedId === activeSnippet.id
+                  className={`px-5 py-2.5 rounded-xl text-xs font-semibold font-geist transition-all inline-flex items-center gap-2 cursor-pointer ${copiedId === activeSnippet.id
                       ? "bg-emerald-600 text-white"
                       : "bg-[#3D38E9] hover:bg-[#322DC8] text-white shadow-xs"
-                  }`}
+                    }`}
                 >
                   {copiedId === activeSnippet.id ? (
                     <>

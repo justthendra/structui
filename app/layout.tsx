@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Bricolage_Grotesque } from "next/font/google";
+import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import EmailVerificationBanner from "@/components/EmailVerificationBanner";
 
-const geist = Geist({
-  variable: "--font-geist",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -43,7 +47,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geist.variable} ${bricolage.variable} antialiased bg-white dark:bg-[#09090b] text-[#202020] dark:text-[#f4f4f5] transition-colors duration-200`}>
+      <body className={`${poppins.variable} ${montserrat.variable} antialiased bg-white dark:bg-[#09090b] text-[#202020] dark:text-[#f4f4f5] transition-colors duration-200`}>
         <ThemeProvider>
           <AuthProvider>
             <EmailVerificationBanner />
