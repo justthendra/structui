@@ -4,43 +4,61 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, Code2 } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 // Rotating Categories Configuration
 const ROTATING_CATEGORIES = [
   {
     text: "UI Component",
-    bg: "#E8E7FD",
-    color: "#3D38E9",
-    dot: "#3D38E9",
+    lightBg: "#E8E7FD",
+    lightColor: "#3D38E9",
+    lightDot: "#3D38E9",
+    darkBg: "#221F5E",
+    darkColor: "#A5B4FC",
+    darkDot: "#818CF8",
   },
   {
     text: "Tailwind Template",
-    bg: "#E0F2FE",
-    color: "#0284C7",
-    dot: "#0284C7",
+    lightBg: "#E0F2FE",
+    lightColor: "#0284C7",
+    lightDot: "#0284C7",
+    darkBg: "#082F49",
+    darkColor: "#38BDF8",
+    darkDot: "#38BDF8",
   },
   {
     text: "Next.js Starter",
-    bg: "#F4F4F5",
-    color: "#18181B",
-    dot: "#18181B",
+    lightBg: "#F4F4F5",
+    lightColor: "#18181B",
+    lightDot: "#18181B",
+    darkBg: "#27272A",
+    darkColor: "#F4F4F5",
+    darkDot: "#E4E4E7",
   },
   {
     text: "Three.js Shader",
-    bg: "#FDF2F8",
-    color: "#DB2777",
-    dot: "#DB2777",
+    lightBg: "#FDF2F8",
+    lightColor: "#DB2777",
+    lightDot: "#DB2777",
+    darkBg: "#500724",
+    darkColor: "#F472B6",
+    darkDot: "#F472B6",
   },
   {
     text: "React Hook",
-    bg: "#ECFDF5",
-    color: "#059669",
-    dot: "#059669",
+    lightBg: "#ECFDF5",
+    lightColor: "#059669",
+    lightDot: "#059669",
+    darkBg: "#064E3B",
+    darkColor: "#34D399",
+    darkDot: "#34D399",
   },
 ];
 
 export default function Hero() {
   const [categoryIndex, setCategoryIndex] = useState(0);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,9 +68,12 @@ export default function Hero() {
   }, []);
 
   const currentCategory = ROTATING_CATEGORIES[categoryIndex];
+  const pillBg = isDark ? currentCategory.darkBg : currentCategory.lightBg;
+  const pillColor = isDark ? currentCategory.darkColor : currentCategory.lightColor;
+  const pillDot = isDark ? currentCategory.darkDot : currentCategory.lightDot;
 
   return (
-    <div className="relative overflow-hidden bg-white group pt-36 md:pt-32 pb-16">
+    <div className="relative overflow-hidden bg-white dark:bg-[#09090b] group pt-36 md:pt-32 pb-16 transition-colors duration-200">
       {/* Background Dot Pattern */}
       <div className="hero-dot-pattern absolute inset-0 z-0 pointer-events-none" />
 
@@ -63,11 +84,11 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 md:py-2 mb-6 bg-white border border-[#e0e0e0] rounded-full shadow-xs hover:border-neutral-400 transition-colors cursor-default"
+            className="inline-flex items-center gap-2 px-4 py-1.5 md:py-2 mb-6 bg-white dark:bg-zinc-900/90 border border-[#e0e0e0] dark:border-zinc-800 rounded-full shadow-xs hover:border-neutral-400 dark:hover:border-zinc-700 transition-colors cursor-default"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#3D38E9]" />
-            <span className="text-[#202020] text-[13px] font-medium font-geist whitespace-nowrap">
-              <span className="font-extrabold text-[#3D38E9]">structui</span> — 100% Free &amp; Open-Source UI Ecosystem
+            <Sparkles className="w-3.5 h-3.5 text-[#3D38E9] dark:text-[#818cf8]" />
+            <span className="text-[#202020] dark:text-zinc-200 text-[13px] font-medium font-geist whitespace-nowrap">
+              <span className="font-extrabold text-[#3D38E9] dark:text-[#818cf8]">structui.</span> — 100% Free &amp; Open-Source UI Ecosystem
             </span>
           </motion.div>
 
@@ -78,20 +99,20 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col items-center justify-center gap-1 md:gap-2 mb-6 w-full"
           >
-            <span className="text-[#202020] font-extrabold font-bricolage tracking-tighter leading-[1.15] text-[clamp(1.75rem,5.5vw,4rem)]">
+            <span className="text-[#202020] dark:text-white font-extrabold font-bricolage tracking-tighter leading-[1.15] text-[clamp(1.75rem,5.5vw,4rem)]">
               Discover your next
             </span>
 
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
               {/* Animated Rotating Pill */}
               <div
-                className="inline-flex items-center justify-center overflow-hidden rounded-full px-3.5 py-1.5 md:px-6 md:py-2.5 transition-colors duration-500"
-                style={{ backgroundColor: currentCategory.bg }}
+                className="inline-flex items-center justify-center overflow-hidden rounded-full px-3.5 py-1.5 md:px-6 md:py-2.5 transition-colors duration-500 shadow-xs"
+                style={{ backgroundColor: pillBg }}
               >
                 <div className="flex items-center gap-2 md:gap-3">
                   <div
                     className="size-2 md:size-3 rounded-full shrink-0 transition-colors duration-500"
-                    style={{ backgroundColor: currentCategory.dot }}
+                    style={{ backgroundColor: pillDot }}
                   />
                   <div className="relative inline-flex overflow-hidden">
                     <AnimatePresence mode="wait">
@@ -102,7 +123,7 @@ export default function Hero() {
                         exit={{ y: -24, opacity: 0 }}
                         transition={{ duration: 0.35, ease: "easeOut" }}
                         className="font-bold font-bricolage leading-[1.15] text-[clamp(1.75rem,5.5vw,4rem)] tracking-[-0.05em] whitespace-nowrap"
-                        style={{ color: currentCategory.color }}
+                        style={{ color: pillColor }}
                       >
                         {currentCategory.text}
                       </motion.span>
@@ -111,7 +132,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <span className="text-[#202020] font-extrabold font-bricolage tracking-tighter leading-[1.15] text-[clamp(1.75rem,5.5vw,4rem)]">
+              <span className="text-[#202020] dark:text-white font-extrabold font-bricolage tracking-tighter leading-[1.15] text-[clamp(1.75rem,5.5vw,4rem)]">
                 in seconds.
               </span>
             </div>
@@ -122,7 +143,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center text-zinc-500 text-sm md:text-base font-normal font-geist leading-relaxed mb-8 mx-auto px-2 max-w-[460px] md:max-w-[620px]"
+            className="text-center text-zinc-500 dark:text-zinc-400 text-sm md:text-base font-normal font-geist leading-relaxed mb-8 mx-auto px-2 max-w-[460px] md:max-w-[620px]"
           >
             An open-source code ecosystem and component library where all React components,
             Tailwind templates, and fullstack boilerplates are 100% free to explore, copy, and publish.
@@ -145,11 +166,11 @@ export default function Hero() {
 
             <Link
               href="/dashboard"
-              className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-neutral-50 active:scale-[0.98] border border-neutral-300 rounded-2xl flex items-center justify-center gap-2 text-[#202020] font-semibold font-geist text-sm md:text-base transition-all shadow-xs cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white dark:bg-zinc-900 hover:bg-neutral-50 dark:hover:bg-zinc-800 active:scale-[0.98] border border-neutral-300 dark:border-zinc-700 rounded-2xl flex items-center justify-center gap-2 text-[#202020] dark:text-zinc-200 font-semibold font-geist text-sm md:text-base transition-all shadow-xs cursor-pointer"
             >
-              <Code2 className="w-4 h-4 text-zinc-500" />
+              <Code2 className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
               <span>Publish Component</span>
-              <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md">
+              <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 rounded-md">
                 100% Free
               </span>
             </Link>
@@ -160,7 +181,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center gap-2.5 font-geist text-[13px] text-zinc-500"
+            className="flex items-center gap-2.5 font-geist text-[13px] text-zinc-500 dark:text-zinc-400"
           >
             <div className="flex -space-x-1.5 flex-shrink-0">
               <img
@@ -168,26 +189,26 @@ export default function Hero() {
                 alt="Dev 1"
                 width={24}
                 height={24}
-                className="w-6 h-6 rounded-full border border-white object-cover"
+                className="w-6 h-6 rounded-full border border-white dark:border-zinc-800 object-cover"
               />
               <img
                 src="/teaser/avatars/creator-2.png"
                 alt="Dev 2"
                 width={24}
                 height={24}
-                className="w-6 h-6 rounded-full border border-white object-cover"
+                className="w-6 h-6 rounded-full border border-white dark:border-zinc-800 object-cover"
               />
               <img
                 src="/teaser/avatars/creator-3.png"
                 alt="Dev 3"
                 width={24}
                 height={24}
-                className="w-6 h-6 rounded-full border border-white object-cover"
+                className="w-6 h-6 rounded-full border border-white dark:border-zinc-800 object-cover"
               />
             </div>
             <div className="text-center">
-              <span className="text-zinc-700 font-semibold">Thousands</span>
-              <span className="text-zinc-500"> of developers building &amp; sharing code</span>
+              <span className="text-zinc-700 dark:text-zinc-200 font-semibold">Thousands</span>
+              <span className="text-zinc-500 dark:text-zinc-400"> of developers building &amp; sharing code</span>
             </div>
           </motion.div>
         </div>

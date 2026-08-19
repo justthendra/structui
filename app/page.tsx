@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="teaser-root bg-white min-h-screen overflow-x-hidden antialiased text-[#202020]">
+    <div className="teaser-root bg-white dark:bg-[#09090b] min-h-screen overflow-x-hidden antialiased text-[#202020] dark:text-[#f4f4f5]">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"

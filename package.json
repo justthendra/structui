@@ -1,7 +1,23 @@
 {
-  "name": "wondx",
+  "name": "structui",
   "version": "0.1.0",
   "private": true,
+  "description": "The official home for code builders, UI/UX engineers, and creators building modern web components with StructUI.",
+  "homepage": "https://github.com/justthendra/structui#readme",
+  "bugs": {
+    "url": "https://github.com/justthendra/structui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justthendra/structui.git"
+  },
+  "license": "MIT",
+  "author": "Thendra",
+  "type": "module",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

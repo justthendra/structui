@@ -89,15 +89,15 @@ export default function AdminUsersPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-1.5 mb-1">
-            <Users className="w-3.5 h-3.5 text-[#3D38E9]" />
-            <span className="text-zinc-500 text-[11px] font-semibold uppercase tracking-wider font-geist">
+            <Users className="w-3.5 h-3.5 text-[#3D38E9] dark:text-[#818cf8]" />
+            <span className="text-zinc-500 dark:text-zinc-400 text-[11px] font-semibold uppercase tracking-wider font-geist">
               User Directory
             </span>
           </div>
-          <h1 className="font-bricolage text-3xl font-extrabold text-[#202020] tracking-tight">
+          <h1 className="font-bricolage text-3xl font-extrabold text-[#202020] dark:text-white tracking-tight">
             Developer &amp; Role Management
           </h1>
-          <p className="text-sm text-zinc-500 font-geist mt-1">
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 font-geist mt-1">
             Promote admins, assign moderator roles, toggle verified badges, and ban accounts.
           </p>
         </div>
@@ -105,25 +105,25 @@ export default function AdminUsersPage() {
         {/* Search & Filter Bar */}
         <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 flex-wrap">
           <div className="relative flex items-center">
-            <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3 pointer-events-none" />
+            <Search className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 absolute left-3 pointer-events-none" />
             <input
               type="text"
               placeholder="Search username or email..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 pl-9 pr-4 rounded-2xl bg-white border border-neutral-200 text-xs font-geist text-[#202020] placeholder:text-zinc-400 focus:border-[#3D38E9] outline-none shadow-xs"
+              className="h-11 pl-9 pr-4 rounded-2xl bg-white dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-800 text-xs font-geist text-[#202020] dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500 focus:border-[#3D38E9] outline-none shadow-xs"
             />
           </div>
 
           <select
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="h-11 px-3.5 rounded-2xl bg-white border border-neutral-200 text-xs font-geist text-zinc-700 focus:border-[#3D38E9] outline-none cursor-pointer shadow-xs"
+            className="h-11 px-3.5 rounded-2xl bg-white dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-800 text-xs font-geist text-zinc-700 dark:text-zinc-200 focus:border-[#3D38E9] outline-none cursor-pointer shadow-xs"
           >
-            <option value="all">All Roles</option>
-            <option value="admin">Admins</option>
-            <option value="moderator">Moderators</option>
-            <option value="developer">Developers</option>
+            <option value="all" className="dark:bg-zinc-900">All Roles</option>
+            <option value="admin" className="dark:bg-zinc-900">Admins</option>
+            <option value="moderator" className="dark:bg-zinc-900">Moderators</option>
+            <option value="developer" className="dark:bg-zinc-900">Developers</option>
           </select>
 
           <button
@@ -136,11 +136,11 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Users Bento Box */}
-      <div className="rounded-3xl border border-neutral-200 bg-white p-2 shadow-xs">
-        <div className="rounded-2xl border border-neutral-200/80 bg-white overflow-hidden">
+      <div className="rounded-3xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-xs">
+        <div className="rounded-2xl border border-neutral-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-geist">
-              <thead className="bg-neutral-50 text-zinc-400 uppercase tracking-wider border-b border-neutral-100 text-[10px] font-bold">
+              <thead className="bg-neutral-50 dark:bg-zinc-950/80 text-zinc-400 dark:text-zinc-500 uppercase tracking-wider border-b border-neutral-100 dark:border-zinc-800 text-[10px] font-bold">
                 <tr>
                   <th className="px-6 py-4">Developer</th>
                   <th className="px-6 py-4">Email / Discord</th>
@@ -151,7 +151,7 @@ export default function AdminUsersPage() {
                   <th className="px-6 py-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-neutral-100 text-zinc-700">
+              <tbody className="divide-y divide-neutral-100 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
                 {loading ? (
                   <tr>
                     <td colSpan={7} className="text-center py-16">
@@ -160,35 +160,35 @@ export default function AdminUsersPage() {
                   </tr>
                 ) : users.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="text-center py-16 text-zinc-400">
+                    <td colSpan={7} className="text-center py-16 text-zinc-400 dark:text-zinc-500">
                       No developers match your query.
                     </td>
                   </tr>
                 ) : (
                   users.map((u) => (
-                    <tr key={u.id} className="hover:bg-neutral-50/60 transition-colors">
+                    <tr key={u.id} className="hover:bg-neutral-50/60 dark:hover:bg-zinc-800/50 transition-colors">
                       {/* User */}
                       <td className="px-6 py-4 flex items-center gap-3">
                         <img
                           src={u.avatar || "/teaser/avatars/creator-1.png"}
                           alt={u.username}
-                          className="w-9 h-9 rounded-full object-cover border border-neutral-200 shadow-xs"
+                          className="w-9 h-9 rounded-full object-cover border border-neutral-200 dark:border-zinc-700 shadow-xs"
                         />
                         <div className="min-w-0">
                           <a
                             href={`/u/${u.username}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="font-bold text-[#202020] hover:text-[#3D38E9] transition-colors"
+                            className="font-bold text-[#202020] dark:text-white hover:text-[#3D38E9] dark:hover:text-[#818cf8] transition-colors"
                           >
                             @{u.username || "unset"}
                           </a>
-                          {u.name && <p className="text-[11px] text-zinc-400">{u.name}</p>}
+                          {u.name && <p className="text-[11px] text-zinc-400 dark:text-zinc-500">{u.name}</p>}
                         </div>
                       </td>
 
                       {/* Email */}
-                      <td className="px-6 py-4 text-zinc-500">
+                      <td className="px-6 py-4 text-zinc-500 dark:text-zinc-400">
                         {u.email || (
                           <span className="inline-flex items-center gap-1 text-[#5865F2] font-medium">
                             <FaDiscord className="w-3 h-3" />
@@ -205,15 +205,15 @@ export default function AdminUsersPage() {
                           onChange={(e) => handleUpdateUser(u.id, { role: e.target.value })}
                           className={`h-8 px-2.5 rounded-xl text-[11px] font-bold border outline-none cursor-pointer shadow-xs ${
                             u.role === "admin"
-                              ? "bg-purple-50 text-purple-700 border-purple-300"
+                              ? "bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-800"
                               : u.role === "moderator"
-                              ? "bg-blue-50 text-blue-700 border-blue-300"
-                              : "bg-neutral-50 text-neutral-700 border-neutral-200"
+                              ? "bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-800"
+                              : "bg-neutral-50 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border-neutral-200 dark:border-zinc-700"
                           }`}
                         >
-                          <option value="developer">Developer</option>
-                          <option value="moderator">Moderator</option>
-                          <option value="admin">Admin</option>
+                          <option value="developer" className="dark:bg-zinc-900">Developer</option>
+                          <option value="moderator" className="dark:bg-zinc-900">Moderator</option>
+                          <option value="admin" className="dark:bg-zinc-900">Admin</option>
                         </select>
                       </td>
 
@@ -225,8 +225,8 @@ export default function AdminUsersPage() {
                           disabled={updatingId === u.id}
                           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-semibold border transition-all cursor-pointer shadow-xs ${
                             u.is_verified
-                              ? "bg-emerald-50 text-emerald-700 border-emerald-300"
-                              : "bg-neutral-50 text-neutral-400 border-neutral-200 hover:text-neutral-600"
+                              ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800"
+                              : "bg-neutral-50 dark:bg-zinc-800 text-neutral-400 dark:text-zinc-500 border-neutral-200 dark:border-zinc-700 hover:text-neutral-600 dark:hover:text-zinc-300"
                           }`}
                         >
                           <ShieldCheck className="w-3 h-3" />
@@ -242,8 +242,8 @@ export default function AdminUsersPage() {
                           disabled={updatingId === u.id}
                           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-semibold border transition-all cursor-pointer shadow-xs ${
                             u.email_verified
-                              ? "bg-cyan-50 text-cyan-700 border-cyan-300"
-                              : "bg-amber-50 text-amber-700 border-amber-300"
+                              ? "bg-cyan-50 dark:bg-cyan-950/50 text-cyan-700 dark:text-cyan-300 border-cyan-300 dark:border-cyan-800"
+                              : "bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-800"
                           }`}
                         >
                           {u.email_verified ? (
@@ -268,8 +268,8 @@ export default function AdminUsersPage() {
                           disabled={updatingId === u.id}
                           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-semibold border transition-all cursor-pointer shadow-xs ${
                             u.is_banned
-                              ? "bg-rose-50 text-rose-700 border-rose-300"
-                              : "bg-emerald-50 text-emerald-700 border-emerald-300"
+                              ? "bg-rose-50 dark:bg-rose-950/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-800"
+                              : "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800"
                           }`}
                         >
                           {u.is_banned ? (
@@ -291,7 +291,7 @@ export default function AdminUsersPage() {
                         <button
                           type="button"
                           onClick={() => setDeletingUser({ id: u.id, username: u.username })}
-                          className="text-neutral-400 hover:text-rose-600 transition-colors p-1.5 rounded-xl hover:bg-rose-50 cursor-pointer"
+                          className="text-neutral-400 hover:text-rose-600 transition-colors p-1.5 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/50 cursor-pointer"
                           title="Delete User"
                         >
                           <Trash2 className="w-4 h-4" />

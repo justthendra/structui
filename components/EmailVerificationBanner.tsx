@@ -33,10 +33,10 @@ export default function EmailVerificationBanner() {
   };
 
   return (
-    <div className="bg-amber-500/10 border-b border-amber-500/30 text-amber-900 px-4 py-2.5 text-xs md:text-sm font-geist relative z-[110] backdrop-blur-md">
+    <div className="bg-amber-500/10 dark:bg-amber-950/40 border-b border-amber-500/30 dark:border-amber-500/20 text-amber-900 dark:text-amber-200 px-4 py-2.5 text-xs md:text-sm font-geist relative z-[110] backdrop-blur-md">
       <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-center sm:text-left">
-          <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0" />
+          <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
           <span>
             <strong>Your email address is not verified yet.</strong> Please check your inbox for <strong>{user.email}</strong> to verify your account.
           </span>
@@ -44,7 +44,7 @@ export default function EmailVerificationBanner() {
 
         <div className="flex items-center gap-3 flex-shrink-0">
           {sentMessage ? (
-            <span className="text-emerald-700 font-medium inline-flex items-center gap-1">
+            <span className="text-emerald-700 dark:text-emerald-400 font-medium inline-flex items-center gap-1">
               <CheckCircle2 className="w-3.5 h-3.5" />
               {sentMessage}
             </span>

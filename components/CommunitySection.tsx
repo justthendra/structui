@@ -23,7 +23,7 @@ const DEFAULT_SERVER_DATA: DiscordGuildData = {
   name: "StructUI",
   description:
     "The official home for code builders, UI/UX engineers, and creators building modern web components with StructUI.",
-  icon: "https://cdn.discordapp.com/icons/1539313350863749171/58b6bb2b5fa01df7b93f9347166c8c72.webp?size=80",
+  icon: "https://cdn.discordapp.com/icons/1539313350863749171/58b6bb2b5fa01df7b93f9347166c8c72.png?size=256",
   banner: null,
   approximate_member_count: 2,
   approximate_presence_count: 2,
@@ -62,7 +62,7 @@ export default function CommunitySection() {
   const inviteLink = serverData.invite_url || "https://discord.gg/MdQqack6Jb";
 
   return (
-    <section className="bg-white py-16 md:py-28 px-6 overflow-hidden">
+    <section className="bg-white dark:bg-[#09090b] py-16 md:py-28 px-6 overflow-hidden transition-colors duration-200">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center max-w-[1100px] mx-auto">
         {/* Left Column Text & Action Buttons */}
         <motion.div
@@ -73,7 +73,7 @@ export default function CommunitySection() {
           className="flex flex-col justify-start items-start gap-6 w-full max-w-[480px]"
         >
           <div className="inline-flex items-center gap-2">
-            <span className="p-1 bg-purple-50 rounded-md border border-purple-200">
+            <span className="p-1 bg-purple-50 dark:bg-purple-950/50 rounded-md border border-purple-200 dark:border-purple-800">
               <svg
                 width="14"
                 height="14"
@@ -81,26 +81,26 @@ export default function CommunitySection() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="text-purple-600"
+                className="text-purple-600 dark:text-purple-400"
               >
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </span>
-            <span className="text-zinc-500 text-xs font-semibold font-geist">
+            <span className="text-zinc-500 dark:text-zinc-400 text-xs font-semibold font-geist">
               Developer Community
             </span>
           </div>
 
           <h2 className="w-full tracking-tighter leading-[1.07]">
-            <span className="text-[#202020] text-3xl sm:text-4xl md:text-[56px] font-extrabold font-bricolage tracking-tighter">
+            <span className="text-[#202020] dark:text-white text-3xl sm:text-4xl md:text-[56px] font-extrabold font-bricolage tracking-tighter">
               A growing community of{" "}
             </span>
-            <span className="text-[#3D38E9] text-3xl sm:text-4xl md:text-[56px] font-extrabold font-bricolage tracking-tighter">
+            <span className="text-[#3D38E9] dark:text-[#818cf8] text-3xl sm:text-4xl md:text-[56px] font-extrabold font-bricolage tracking-tighter">
               code builders.
             </span>
           </h2>
 
-          <p className="text-zinc-500 text-base font-normal font-geist leading-relaxed">
+          <p className="text-zinc-500 dark:text-zinc-400 text-base font-normal font-geist leading-relaxed">
             Engineers, creators, and designers share code, review pull requests, and trade
             UI components on our official Discord server. Join now and build with us!
           </p>
@@ -110,7 +110,7 @@ export default function CommunitySection() {
               href={inviteLink}
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 bg-[#3D38E9] hover:bg-[#322DC8] active:scale-[0.98] transition-all rounded-full inline-flex justify-center items-center gap-2.5 shadow-sm shadow-[#3D38E9]/20 text-white font-medium font-geist group"
+              className="px-6 py-3 bg-[#3D38E9] hover:bg-[#322DC8] active:scale-[0.98] transition-all rounded-full inline-flex justify-center items-center gap-2.5 shadow-sm shadow-[#3D38E9]/20 text-white font-medium font-geist group cursor-pointer"
             >
               <FaDiscord className="w-5 h-5 transition-transform group-hover:scale-110" />
               <span className="whitespace-nowrap">Join our Discord</span>
@@ -120,7 +120,7 @@ export default function CommunitySection() {
               href="https://github.com/justthendra/structui"
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 bg-white hover:bg-neutral-50 active:scale-[0.98] transition-all rounded-full border border-neutral-300 inline-flex justify-center items-center gap-2 text-[#202020] font-medium font-geist"
+              className="px-6 py-3 bg-white dark:bg-zinc-900 hover:bg-neutral-50 dark:hover:bg-zinc-800 active:scale-[0.98] transition-all rounded-full border border-neutral-300 dark:border-zinc-700 inline-flex justify-center items-center gap-2 text-[#202020] dark:text-zinc-200 font-medium font-geist cursor-pointer"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path
@@ -142,9 +142,9 @@ export default function CommunitySection() {
           transition={{ duration: 0.7 }}
           className="flex justify-center w-full"
         >
-          <div className="w-full max-w-[500px] flex flex-col justify-start items-center bg-white rounded-3xl border border-neutral-200/80 p-3.5 shadow-xl shadow-black/5 hover:border-neutral-300 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all">
+          <div className="w-full max-w-[500px] flex flex-col justify-start items-center bg-white dark:bg-zinc-900 rounded-3xl border border-neutral-200/80 dark:border-zinc-800 p-3.5 shadow-xl shadow-black/5 dark:shadow-black/60 hover:border-neutral-300 dark:hover:border-zinc-700 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all">
             {/* Banner & Floating Icon */}
-            <div className="w-full aspect-[2.35/1] min-h-[160px] rounded-2xl overflow-hidden relative shadow-inner border border-neutral-200/60 bg-gradient-to-tr from-[#0B0F2A] via-[#151B4E] to-[#25206D]">
+            <div className="w-full aspect-[2.35/1] min-h-[160px] rounded-2xl overflow-hidden relative shadow-inner border border-neutral-200/60 dark:border-zinc-800 bg-gradient-to-tr from-[#0B0F2A] via-[#151B4E] to-[#25206D]">
               <Image
                 src="/banner.png"
                 alt={serverData.name}
@@ -167,7 +167,7 @@ export default function CommunitySection() {
             <div className="w-full px-4 flex flex-col justify-center items-center gap-3.5 mt-[-28px] pb-3 text-center relative z-10">
               {/* Server Icon with border */}
               <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-white p-1 shadow-lg border border-neutral-200/90 overflow-hidden flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-zinc-800 p-1 shadow-lg border border-neutral-200/90 dark:border-zinc-700 overflow-hidden flex items-center justify-center">
                   {serverData.icon ? (
                     <Image
                       src={serverData.icon}
@@ -184,32 +184,32 @@ export default function CommunitySection() {
                 </div>
                 {/* Live Online Badge on Icon */}
                 <div
-                  className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#1A9E5C] border-2 border-white rounded-full flex items-center justify-center shadow-sm"
+                  className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#1A9E5C] border-2 border-white dark:border-zinc-800 rounded-full flex items-center justify-center shadow-sm"
                   title="Server is active"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5 items-center">
-                <h3 className="text-[#202020] text-xl md:text-2xl font-extrabold font-bricolage tracking-tight flex items-center gap-2">
+                <h3 className="text-[#202020] dark:text-white text-xl md:text-2xl font-extrabold font-bricolage tracking-tight flex items-center gap-2">
                   <span>{serverData.name}</span>
                 </h3>
-                <p className="text-zinc-500 text-xs md:text-sm font-normal font-geist max-w-[380px] line-clamp-3 leading-relaxed">
+                <p className="text-zinc-500 dark:text-zinc-400 text-xs md:text-sm font-normal font-geist max-w-[380px] line-clamp-3 leading-relaxed">
                   {serverData.description}
                 </p>
               </div>
 
               {/* Online / Member Counters */}
               <div className="inline-flex justify-center items-center gap-6 pt-1">
-                <div className="flex items-center gap-2 bg-emerald-50/70 border border-emerald-200/60 px-3 py-1 rounded-full">
+                <div className="flex items-center gap-2 bg-emerald-50/70 dark:bg-emerald-950/50 border border-emerald-200/60 dark:border-emerald-800 px-3 py-1 rounded-full">
                   <div className="w-2.5 h-2.5 bg-[#1A9E5C] rounded-full animate-pulse" />
-                  <span className="text-emerald-800 text-xs font-semibold font-geist">
+                  <span className="text-emerald-800 dark:text-emerald-300 text-xs font-semibold font-geist">
                     {serverData.approximate_presence_count.toLocaleString()}{" "}
                     {serverData.approximate_presence_count === 1 ? "Online" : "Online"}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 bg-neutral-100/80 border border-neutral-200/80 px-3 py-1 rounded-full">
+                <div className="flex items-center gap-2 bg-neutral-100/80 dark:bg-zinc-800 border border-neutral-200/80 dark:border-zinc-700 px-3 py-1 rounded-full">
                   <div className="w-2.5 h-2.5 bg-neutral-400 rounded-full" />
-                  <span className="text-neutral-700 text-xs font-semibold font-geist">
+                  <span className="text-neutral-700 dark:text-zinc-300 text-xs font-semibold font-geist">
                     {serverData.approximate_member_count.toLocaleString()}{" "}
                     {serverData.approximate_member_count === 1 ? "Member" : "Members"}
                   </span>
@@ -221,7 +221,7 @@ export default function CommunitySection() {
                 href={inviteLink}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full mt-1 py-2.5 px-4 bg-neutral-900 hover:bg-[#3D38E9] text-white text-xs md:text-sm font-medium font-geist rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
+                className="w-full mt-1 py-2.5 px-4 bg-neutral-900 dark:bg-zinc-800 hover:bg-[#3D38E9] dark:hover:bg-[#3D38E9] text-white text-xs md:text-sm font-medium font-geist rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               >
                 <FaDiscord className="w-4 h-4" />
                 <span>Connect & Enter Server</span>
@@ -233,4 +233,3 @@ export default function CommunitySection() {
     </section>
   );
 }
-

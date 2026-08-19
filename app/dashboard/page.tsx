@@ -166,7 +166,7 @@ export default function Component() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#FBFBFB] flex flex-col justify-between font-geist">
+      <div className="min-h-screen bg-[#FBFBFB] dark:bg-[#09090b] flex flex-col justify-between font-geist">
         <Navbar />
         <div className="flex-1 flex items-center justify-center py-32">
           <div className="size-9 border-3 border-[#3D38E9] border-t-transparent rounded-full animate-spin" />
@@ -186,55 +186,55 @@ export default function Component() {
       label: "Published Components",
       value: stats.totalSnippets,
       subtitle: "100% Free & Open-Source",
-      icon: <Package className="w-5 h-5 text-[#3D38E9]" />,
-      bg: "bg-indigo-50/60 border-indigo-200/80 text-[#3D38E9]",
+      icon: <Package className="w-5 h-5 text-[#3D38E9] dark:text-[#818cf8]" />,
+      bg: "bg-indigo-50/60 dark:bg-indigo-950/40 border-indigo-200/80 dark:border-indigo-800 text-[#3D38E9] dark:text-[#818cf8]",
     },
     {
       label: "Total Snippet Views",
       value: stats.totalViews.toLocaleString(),
       subtitle: "Developer impressions",
-      icon: <Eye className="w-5 h-5 text-blue-600" />,
-      bg: "bg-blue-50/60 border-blue-200/80 text-blue-700",
+      icon: <Eye className="w-5 h-5 text-blue-600 dark:text-blue-400" />,
+      bg: "bg-blue-50/60 dark:bg-blue-950/40 border-blue-200/80 dark:border-blue-800 text-blue-700 dark:text-blue-300",
     },
     {
       label: "Stars Received",
       value: stats.totalStars.toLocaleString(),
       subtitle: "Community recognition",
       icon: <Star className="w-5 h-5 text-amber-500 fill-amber-500" />,
-      bg: "bg-amber-50/60 border-amber-200/80 text-amber-700",
+      bg: "bg-amber-50/60 dark:bg-amber-950/40 border-amber-200/80 dark:border-amber-800 text-amber-700 dark:text-amber-300",
     },
     {
       label: "Open License",
       value: "MIT",
       subtitle: "Free for all developers",
-      icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
-      bg: "bg-emerald-50/60 border-emerald-200/80 text-emerald-700",
+      icon: <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />,
+      bg: "bg-emerald-50/60 dark:bg-emerald-950/40 border-emerald-200/80 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#202020] flex flex-col justify-between font-geist">
+    <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#202020] dark:text-[#f4f4f5] flex flex-col justify-between font-geist transition-colors duration-200">
       <Navbar />
 
       {/* Hero Header */}
-      <section className="relative bg-[#F7F7F7] border-b border-neutral-200/80 mt-16 pt-12 pb-10 px-6 overflow-hidden">
+      <section className="relative bg-[#F7F7F7] dark:bg-zinc-950/70 border-b border-neutral-200/80 dark:border-zinc-800/80 mt-16 pt-12 pb-10 px-6 overflow-hidden">
         <div className="absolute inset-0 hero-dot-pattern opacity-60 pointer-events-none" />
 
         <div className="max-w-[1100px] mx-auto relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <div>
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 mb-2 bg-white px-3.5 py-1.5 rounded-full border border-neutral-200 shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 text-[#3D38E9]" />
-                <span className="text-zinc-600 text-xs font-semibold font-geist">
+              <div className="inline-flex items-center gap-2 mb-2 bg-white dark:bg-zinc-900 px-3.5 py-1.5 rounded-full border border-neutral-200 dark:border-zinc-800 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#3D38E9] dark:text-[#818cf8]" />
+                <span className="text-zinc-600 dark:text-zinc-300 text-xs font-semibold font-geist">
                   Creator Studio &amp; Code Manager
                 </span>
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-extrabold font-bricolage text-[#202020] tracking-tighter leading-tight">
+              <h1 className="text-3xl md:text-5xl font-extrabold font-bricolage text-[#202020] dark:text-white tracking-tighter leading-tight">
                 Developer Dashboard
               </h1>
-              <p className="text-zinc-500 text-sm font-geist mt-1.5 max-w-lg">
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm font-geist mt-1.5 max-w-lg">
                 Publish React components, Tailwind templates, or scripts 100% free for the community.
               </p>
             </div>
@@ -261,11 +261,11 @@ export default function Component() {
           {metricCards.map((m) => (
             <div
               key={m.label}
-              className="rounded-3xl border border-neutral-200 bg-white p-2 shadow-xs"
+              className="rounded-3xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-xs"
             >
-              <div className="rounded-2xl border border-neutral-200/80 bg-neutral-50 p-5 flex flex-col justify-between h-36">
+              <div className="rounded-2xl border border-neutral-200/80 dark:border-zinc-800 bg-neutral-50 dark:bg-zinc-950/70 p-5 flex flex-col justify-between h-36">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-zinc-500 font-geist">
+                  <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 font-geist">
                     {m.label}
                   </span>
                   <div className={`p-2 rounded-xl border ${m.bg}`}>
@@ -274,10 +274,10 @@ export default function Component() {
                 </div>
 
                 <div>
-                  <h3 className="font-bricolage text-2xl font-extrabold text-[#202020] tracking-tight">
+                  <h3 className="font-bricolage text-2xl font-extrabold text-[#202020] dark:text-white tracking-tight">
                     {m.value}
                   </h3>
-                  <p className="text-[11px] text-zinc-400 font-medium font-geist mt-0.5">
+                  <p className="text-[11px] text-zinc-400 dark:text-zinc-500 font-medium font-geist mt-0.5">
                     {m.subtitle}
                   </p>
                 </div>
@@ -287,14 +287,14 @@ export default function Component() {
         </div>
 
         {/* Developer Published Snippets Section */}
-        <div className="rounded-3xl border border-neutral-200 bg-white p-2 shadow-xs">
-          <div className="rounded-2xl border border-neutral-200/80 bg-white p-6 sm:p-8">
-            <div className="flex items-center justify-between pb-6 border-b border-neutral-100">
+        <div className="rounded-3xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-xs">
+          <div className="rounded-2xl border border-neutral-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 sm:p-8">
+            <div className="flex items-center justify-between pb-6 border-b border-neutral-100 dark:border-zinc-800">
               <div>
-                <h2 className="font-bricolage text-2xl font-extrabold text-[#202020] tracking-tight">
+                <h2 className="font-bricolage text-2xl font-extrabold text-[#202020] dark:text-white tracking-tight">
                   Your Published Components ({snippets.length})
                 </h2>
-                <p className="text-xs text-zinc-500 font-geist mt-0.5">
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 font-geist mt-0.5">
                   Manage, update or delete your published code snippets.
                 </p>
               </div>
@@ -302,7 +302,7 @@ export default function Component() {
               <button
                 type="button"
                 onClick={() => handleOpenPublish()}
-                className="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 text-xs font-semibold text-[#202020] rounded-xl transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 bg-neutral-100 dark:bg-zinc-800 hover:bg-neutral-200 dark:hover:bg-zinc-700 text-xs font-semibold text-[#202020] dark:text-zinc-200 rounded-xl transition-colors inline-flex items-center gap-1.5 cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Code</span>
@@ -311,13 +311,13 @@ export default function Component() {
 
             {snippets.length === 0 ? (
               <div className="text-center py-16">
-                <div className="w-14 h-14 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mx-auto mb-3 text-[#3D38E9]">
+                <div className="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900 flex items-center justify-center mx-auto mb-3 text-[#3D38E9] dark:text-[#818cf8]">
                   <Code2 className="w-7 h-7" />
                 </div>
-                <h3 className="font-bricolage text-xl font-bold text-[#202020] mb-1">
+                <h3 className="font-bricolage text-xl font-bold text-[#202020] dark:text-white mb-1">
                   No components published yet
                 </h3>
-                <p className="text-xs sm:text-sm text-zinc-500 font-geist max-w-sm mx-auto mb-6">
+                <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-geist max-w-sm mx-auto mb-6">
                   Publish your first React component, Tailwind card, or script to share with the community.
                 </p>
                 <button
@@ -329,7 +329,7 @@ export default function Component() {
                 </button>
               </div>
             ) : (
-              <div className="divide-y divide-neutral-100">
+              <div className="divide-y divide-neutral-100 dark:divide-zinc-800">
                 {snippets.map((snip: any) => {
                   const isCopied = copiedId === snip.id;
 
@@ -340,22 +340,22 @@ export default function Component() {
                     >
                       <div className="space-y-1.5 max-w-xl">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold uppercase bg-neutral-100 text-zinc-600 px-2 py-0.5 rounded-md border border-neutral-200">
+                          <span className="text-[10px] font-bold uppercase bg-neutral-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 px-2 py-0.5 rounded-md border border-neutral-200 dark:border-zinc-700">
                             {snip.language}
                           </span>
-                          <span className="text-[11px] font-medium text-zinc-500">
+                          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">
                             {snip.category}
                           </span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                             100% Free
                           </span>
                         </div>
 
-                        <h3 className="font-bricolage text-lg font-bold text-[#202020] group-hover:text-[#3D38E9] transition-colors">
+                        <h3 className="font-bricolage text-lg font-bold text-[#202020] dark:text-white group-hover:text-[#3D38E9] dark:group-hover:text-[#818cf8] transition-colors">
                           {snip.title}
                         </h3>
 
-                        <p className="text-xs text-zinc-500 font-geist line-clamp-1">
+                        <p className="text-xs text-zinc-500 dark:text-zinc-400 font-geist line-clamp-1">
                           {snip.description || "No description provided."}
                         </p>
                       </div>
@@ -363,9 +363,9 @@ export default function Component() {
                       {/* Right Meta & Actions */}
                       <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
                         {/* Stats */}
-                        <div className="flex items-center gap-3 text-xs text-zinc-500 font-geist pr-2">
+                        <div className="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 font-geist pr-2">
                           <span className="flex items-center gap-1">
-                            <Eye className="w-3.5 h-3.5 text-zinc-400" />
+                            <Eye className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
                             <span>{snip.views_count || 0}</span>
                           </span>
                           <span className="flex items-center gap-1">
@@ -378,17 +378,17 @@ export default function Component() {
                         <button
                           type="button"
                           onClick={() => handleCopyCode(snip.id, snip.code)}
-                          className="p-2 rounded-xl border border-neutral-200 hover:bg-neutral-50 text-zinc-600 transition-colors cursor-pointer"
+                          className="p-2 rounded-xl border border-neutral-200 dark:border-zinc-700 hover:bg-neutral-50 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors cursor-pointer"
                           title="Copy Code"
                         >
-                          {isCopied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                          {isCopied ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                         </button>
 
                         {/* Edit Button */}
                         <button
                           type="button"
                           onClick={() => handleOpenPublish(snip)}
-                          className="p-2 rounded-xl border border-neutral-200 hover:bg-neutral-50 text-zinc-600 transition-colors cursor-pointer"
+                          className="p-2 rounded-xl border border-neutral-200 dark:border-zinc-700 hover:bg-neutral-50 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors cursor-pointer"
                           title="Edit Component"
                         >
                           <Edit3 className="w-4 h-4" />
@@ -398,7 +398,7 @@ export default function Component() {
                         <button
                           type="button"
                           onClick={() => promptDeleteSnippet(snip)}
-                          className="p-2 rounded-xl border border-rose-200 hover:bg-rose-50 text-rose-600 transition-colors cursor-pointer"
+                          className="p-2 rounded-xl border border-rose-200 dark:border-rose-900/60 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-rose-600 dark:text-rose-400 transition-colors cursor-pointer"
                           title="Delete Component"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -416,27 +416,27 @@ export default function Component() {
       {/* Publish & Edit Modal */}
       {isPublishModalOpen && (
         <div
-          className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
+          className="fixed inset-0 z-[200] bg-black/60 dark:bg-black/80 backdrop-blur-xs flex items-center justify-center p-4"
           onClick={() => setIsPublishModalOpen(false)}
         >
           <div
-            className="w-full max-w-2xl bg-white rounded-3xl border border-neutral-200 overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col"
+            className="w-full max-w-2xl bg-white dark:bg-zinc-900 rounded-3xl border border-neutral-200 dark:border-zinc-800 overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="p-6 border-b border-neutral-100 flex items-center justify-between">
+            <div className="p-6 border-b border-neutral-100 dark:border-zinc-800 flex items-center justify-between">
               <div>
-                <h2 className="font-bricolage text-2xl font-extrabold text-[#202020]">
+                <h2 className="font-bricolage text-2xl font-extrabold text-[#202020] dark:text-white">
                   {editingSnippetId ? "Edit Component Snippet" : "Publish New Component"}
                 </h2>
-                <p className="text-xs text-zinc-500 font-geist mt-0.5">
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 font-geist mt-0.5">
                   Share your code 100% free with the open-source developer ecosystem.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsPublishModalOpen(false)}
-                className="p-2 rounded-xl text-zinc-400 hover:text-zinc-700 hover:bg-neutral-100"
+                className="p-2 rounded-xl text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-800 cursor-pointer"
               >
                 ✕
               </button>
@@ -445,7 +445,7 @@ export default function Component() {
             {/* Modal Form */}
             <form onSubmit={handleSaveSnippet} className="p-6 overflow-y-auto space-y-4 flex-1 font-geist">
               <div>
-                <label className="block text-xs font-bold text-[#202020] mb-1.5">
+                <label className="block text-xs font-bold text-[#202020] dark:text-zinc-200 mb-1.5">
                   Component Title *
                 </label>
                 <input
@@ -454,52 +454,52 @@ export default function Component() {
                   placeholder="e.g. Glassmorphism Floating Navbar with Blur"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full h-11 px-4 rounded-xl border border-neutral-200 text-sm focus:border-[#3D38E9] outline-none"
+                  className="w-full h-11 px-4 rounded-xl border border-neutral-200 dark:border-zinc-700 text-sm focus:border-[#3D38E9] dark:focus:border-[#818cf8] outline-none bg-white dark:bg-zinc-800 text-[#202020] dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Category */}
                 <div>
-                  <label className="block text-xs font-bold text-[#202020] mb-1.5">
+                  <label className="block text-xs font-bold text-[#202020] dark:text-zinc-200 mb-1.5">
                     Category
                   </label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full h-11 px-3 rounded-xl border border-neutral-200 text-xs text-zinc-700 font-semibold outline-none cursor-pointer bg-white"
+                    className="w-full h-11 px-3 rounded-xl border border-neutral-200 dark:border-zinc-700 text-xs text-zinc-700 dark:text-zinc-200 font-semibold outline-none cursor-pointer bg-white dark:bg-zinc-800"
                   >
-                    <option value="React Components">React Components</option>
-                    <option value="Tailwind Templates">Tailwind Templates</option>
-                    <option value="Next.js Boilerplates">Next.js Boilerplates</option>
-                    <option value="Backend & Edge">Backend &amp; Edge</option>
-                    <option value="Shaders & 3D">Shaders &amp; 3D</option>
-                    <option value="Fullstack Starter Kits">Fullstack Starter Kits</option>
+                    <option value="React Components" className="dark:bg-zinc-900">React Components</option>
+                    <option value="Tailwind Templates" className="dark:bg-zinc-900">Tailwind Templates</option>
+                    <option value="Next.js Boilerplates" className="dark:bg-zinc-900">Next.js Boilerplates</option>
+                    <option value="Backend & Edge" className="dark:bg-zinc-900">Backend &amp; Edge</option>
+                    <option value="Shaders & 3D" className="dark:bg-zinc-900">Shaders &amp; 3D</option>
+                    <option value="Fullstack Starter Kits" className="dark:bg-zinc-900">Fullstack Starter Kits</option>
                   </select>
                 </div>
 
                 {/* Language */}
                 <div>
-                  <label className="block text-xs font-bold text-[#202020] mb-1.5">
+                  <label className="block text-xs font-bold text-[#202020] dark:text-zinc-200 mb-1.5">
                     Language / Stack
                   </label>
                   <select
                     value={language}
                     onChange={(e) => setLanguage(e.target.value)}
-                    className="w-full h-11 px-3 rounded-xl border border-neutral-200 text-xs text-zinc-700 font-semibold outline-none cursor-pointer bg-white"
+                    className="w-full h-11 px-3 rounded-xl border border-neutral-200 dark:border-zinc-700 text-xs text-zinc-700 dark:text-zinc-200 font-semibold outline-none cursor-pointer bg-white dark:bg-zinc-800"
                   >
-                    <option value="typescript">TypeScript</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="tsx">React (TSX)</option>
-                    <option value="css">Tailwind CSS</option>
-                    <option value="python">Python</option>
-                    <option value="glsl">Three.js / GLSL</option>
+                    <option value="typescript" className="dark:bg-zinc-900">TypeScript</option>
+                    <option value="javascript" className="dark:bg-zinc-900">JavaScript</option>
+                    <option value="tsx" className="dark:bg-zinc-900">React (TSX)</option>
+                    <option value="css" className="dark:bg-zinc-900">Tailwind CSS</option>
+                    <option value="python" className="dark:bg-zinc-900">Python</option>
+                    <option value="glsl" className="dark:bg-zinc-900">Three.js / GLSL</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#202020] mb-1.5">
+                <label className="block text-xs font-bold text-[#202020] dark:text-zinc-200 mb-1.5">
                   Description
                 </label>
                 <textarea
@@ -507,12 +507,12 @@ export default function Component() {
                   placeholder="Brief summary of how to use this component..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-neutral-200 text-xs focus:border-[#3D38E9] outline-none resize-none"
+                  className="w-full p-3 rounded-xl border border-neutral-200 dark:border-zinc-700 text-xs focus:border-[#3D38E9] dark:focus:border-[#818cf8] outline-none resize-none bg-white dark:bg-zinc-800 text-[#202020] dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#202020] mb-1.5">
+                <label className="block text-xs font-bold text-[#202020] dark:text-zinc-200 mb-1.5">
                   Source Code (TSX, JSX, CSS, Python) *
                 </label>
                 <div className="rounded-xl border border-neutral-800 bg-[#161b22] overflow-hidden">
@@ -527,7 +527,7 @@ export default function Component() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#202020] mb-1.5">
+                <label className="block text-xs font-bold text-[#202020] dark:text-zinc-200 mb-1.5">
                   Tags (comma separated)
                 </label>
                 <input
@@ -535,16 +535,16 @@ export default function Component() {
                   placeholder="react, tailwind, animation, hero"
                   value={tags}
                   onChange={(e) => setTags(e.target.value)}
-                  className="w-full h-11 px-4 rounded-xl border border-neutral-200 text-xs focus:border-[#3D38E9] outline-none"
+                  className="w-full h-11 px-4 rounded-xl border border-neutral-200 dark:border-zinc-700 text-xs focus:border-[#3D38E9] dark:focus:border-[#818cf8] outline-none bg-white dark:bg-zinc-800 text-[#202020] dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
                 />
               </div>
 
               {/* Modal Footer */}
-              <div className="flex justify-end gap-3 pt-4 border-t border-neutral-100">
+              <div className="flex justify-end gap-3 pt-4 border-t border-neutral-100 dark:border-zinc-800">
                 <button
                   type="button"
                   onClick={() => setIsPublishModalOpen(false)}
-                  className="px-4 py-2.5 rounded-xl border border-neutral-200 text-xs font-semibold text-zinc-600 hover:bg-neutral-50 cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-zinc-700 text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:bg-neutral-50 dark:hover:bg-zinc-800 cursor-pointer"
                 >
                   Cancel
                 </button>
