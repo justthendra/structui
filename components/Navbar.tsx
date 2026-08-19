@@ -336,7 +336,7 @@ export default function Navbar() {
               {/* Theme Segmented Switcher for Mobile */}
               <div className="space-y-1.5">
                 <p className="text-[11px] font-bold text-neutral-400 dark:text-zinc-500 uppercase tracking-wider px-3">
-                  Görünüm Teması
+                  Theme
                 </p>
                 <ThemeSegmentedToggle />
               </div>
