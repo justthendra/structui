@@ -277,7 +277,7 @@ export default function UserProfilePage() {
     <div className="min-h-screen bg-[#FBFBFB] dark:bg-[#09090b] text-[#202020] dark:text-[#f4f4f5] flex flex-col justify-between font-geist transition-colors duration-200">
       <Navbar />
 
-      <main className="flex-1 pt-20 pb-20">
+      <main className="flex-1 pt-20 pb-20 mt-16">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
           {/* Main Profile Bento Box */}
           <div className="rounded-3xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-xs mb-8">
