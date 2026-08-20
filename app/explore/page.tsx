@@ -19,6 +19,7 @@ import {
   Zap,
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { FaClock, FaFire, FaStar } from "react-icons/fa";
 
 export default function ExplorePage() {
   const [snippets, setSnippets] = useState<any[]>([]);
@@ -230,9 +231,9 @@ export default function ExplorePage() {
               onChange={(e) => setSortFilter(e.target.value)}
               className="h-9 px-3 rounded-xl bg-white dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-200 outline-none cursor-pointer shadow-xs"
             >
-              <option value="trending" className="dark:bg-zinc-900 dark:text-zinc-200">🔥 Trending</option>
-              <option value="stars" className="dark:bg-zinc-900 dark:text-zinc-200">⭐ Most Starred</option>
-              <option value="latest" className="dark:bg-zinc-900 dark:text-zinc-200">✨ Latest Added</option>
+              <option value="trending" className="dark:bg-zinc-900 dark:text-zinc-200"><FaFire className="w-4 h-4" /> Trending</option>
+              <option value="stars" className="dark:bg-zinc-900 dark:text-zinc-200"><FaStar className="w-4 h-4" /> Most Starred</option>
+              <option value="latest" className="dark:bg-zinc-900 dark:text-zinc-200"><FaClock className="w-4 h-4" /> Latest Added</option>
             </select>
           </div>
         </div>
