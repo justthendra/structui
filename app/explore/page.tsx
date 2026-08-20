@@ -121,8 +121,24 @@ export default function ExplorePage() {
     }
   };
 
+  const getFileExtension = (lang?: string) => {
+    const l = (lang || "").toLowerCase().trim();
+    if (l === "python" || l === "py") return "py";
+    if (l === "css" || l === "tailwind") return "css";
+    if (l === "typescript" || l === "ts") return "ts";
+    if (l === "javascript" || l === "js") return "js";
+    if (l === "jsx") return "jsx";
+    if (l === "html") return "html";
+    if (l === "json") return "json";
+    if (l === "glsl") return "glsl";
+    if (l === "bash" || l === "sh") return "sh";
+    if (l === "markdown" || l === "md") return "md";
+    if (l === "sql") return "sql";
+    return "tsx";
+  };
+
   const handleDownloadFile = (snippet: any) => {
-    const ext = snippet.language === "python" ? "py" : snippet.language === "css" ? "css" : "tsx";
+    const ext = getFileExtension(snippet.language);
     const filename = `${snippet.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}.${ext}`;
     const blob = new Blob([snippet.code], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -314,24 +330,39 @@ export default function ExplorePage() {
                         {snippet.description || "No description provided."}
                       </p>
 
-                      {/* Code Preview Box */}
-                      <div className="relative rounded-2xl bg-[#161b22] p-3.5 font-mono text-[11px] text-zinc-300 overflow-hidden border border-neutral-800 h-28 group/code">
-                        <pre className="overflow-hidden line-clamp-4">
-                          <code>{snippet.code}</code>
-                        </pre>
+                      {/* Code Preview Box with Syntax Highlighting */}
+                      <div className="relative rounded-2xl bg-[#0d1117] p-3.5 font-mono text-[11px] text-zinc-300 overflow-hidden border border-neutral-800/80 h-32 group/code shadow-inner">
+                        {/* Terminal mini bar */}
+                        <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/[0.06]">
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-2 h-2 rounded-full bg-[#ff5f56]" />
+                            <div className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
+                            <div className="w-2 h-2 rounded-full bg-[#27c93f]" />
+                          </div>
+                          <LanguageBadge language={snippet.language} className="text-[10px] py-0.5 px-2 font-mono" />
+                        </div>
+
+                        <div className="overflow-hidden">
+                          <CodeHighlight
+                            code={snippet.code}
+                            language={snippet.language}
+                            maxLines={4}
+                            className="text-[11px] leading-relaxed"
+                          />
+                        </div>
 
                         {/* Quick Copy Floating Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#161b22] via-[#161b22]/40 to-transparent flex items-end justify-between p-3 opacity-90 group-hover:opacity-100 transition-opacity">
-                          <span className="text-[10px] font-bold uppercase text-zinc-400 bg-neutral-900/80 px-2 py-0.5 rounded border border-neutral-700">
-                            {snippet.language}
+                        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#0d1117] via-[#0d1117]/85 to-transparent flex items-end justify-between p-2.5">
+                          <span className="text-[10px] font-mono text-zinc-400">
+                            {snippet.code ? `${snippet.code.split("\n").length} lines` : ""}
                           </span>
 
                           <button
                             type="button"
                             onClick={(e) => handleCopyCode(snippet.id, snippet.code, e)}
-                            className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${isCopied
+                            className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer shadow-xs ${isCopied
                               ? "bg-emerald-600 text-white"
-                              : "bg-[#3D38E9] hover:bg-[#322DC8] text-white shadow-xs"
+                              : "bg-[#3D38E9] hover:bg-[#322DC8] text-white"
                               }`}
                           >
                             {isCopied ? (
@@ -387,19 +418,17 @@ export default function ExplorePage() {
           onClick={() => setActiveSnippet(null)}
         >
           <div
-            className="w-full max-w-3xl bg-white dark:bg-zinc-900 rounded-3xl border border-neutral-200 dark:border-zinc-800 overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col"
+            className="w-full max-w-4xl bg-white dark:bg-zinc-900 rounded-3xl border border-neutral-200 dark:border-zinc-800 overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="p-6 border-b border-neutral-100 dark:border-zinc-800 flex items-start justify-between gap-4">
               <div>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-2 flex-wrap">
                   <span className="text-[11px] font-bold uppercase text-[#3D38E9] dark:text-[#a5b4fc] bg-[#3D38E9]/10 dark:bg-[#3D38E9]/20 px-2.5 py-0.5 rounded-md border border-[#3D38E9]/20">
                     {activeSnippet.category}
                   </span>
-                  <span className="text-[11px] font-bold text-zinc-600 dark:text-zinc-300 bg-neutral-100 dark:bg-zinc-800 px-2.5 py-0.5 rounded-md">
-                    {activeSnippet.language}
-                  </span>
+                  <LanguageBadge language={activeSnippet.language} />
                   <span className="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                     {activeSnippet.price > 0 ? `€${Number(activeSnippet.price).toFixed(2)}` : "Free / Open Source"}
                   </span>
@@ -453,26 +482,41 @@ export default function ExplorePage() {
                 </p>
               )}
 
-              {/* Full Code Container */}
-              <div className="rounded-2xl bg-[#161b22] border border-neutral-800 overflow-hidden">
-                <div className="flex items-center justify-between px-4 py-2.5 bg-neutral-900 border-b border-neutral-800 text-xs text-zinc-400">
-                  <span className="font-mono text-[11px]">{activeSnippet.title}.{activeSnippet.language === "python" ? "py" : "tsx"}</span>
-                  <div className="flex items-center gap-2">
+              {/* Full Code Container with Terminal IDE UI */}
+              <div className="rounded-2xl bg-[#0d1117] border border-neutral-800 overflow-hidden shadow-lg">
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[#161b22] border-b border-neutral-800/80 text-xs text-zinc-400">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+                    </div>
+                    <span className="font-mono text-[11px] text-zinc-300 font-medium">
+                      {activeSnippet.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}.{getFileExtension(activeSnippet.language)}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 font-geist">
+                    <span className="text-[11px] font-mono text-zinc-500">
+                      {activeSnippet.code ? `${activeSnippet.code.split("\n").length} lines` : ""}
+                    </span>
                     <button
                       type="button"
                       onClick={() => handleDownloadFile(activeSnippet)}
-                      className="inline-flex items-center gap-1 text-xs hover:text-white transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-white transition-colors cursor-pointer"
                     >
-                      <Download className="w-3 h-3" />
+                      <Download className="w-3.5 h-3.5" />
                       <span>Download</span>
                     </button>
                   </div>
                 </div>
 
-                <div className="p-4 font-mono text-xs text-zinc-200 overflow-x-auto max-h-96">
-                  <pre>
-                    <code>{activeSnippet.code}</code>
-                  </pre>
+                <div className="p-4 overflow-x-auto max-h-[420px]">
+                  <CodeHighlight
+                    code={activeSnippet.code}
+                    language={activeSnippet.language}
+                    showLineNumbers={true}
+                  />
                 </div>
               </div>
             </div>
@@ -494,7 +538,7 @@ export default function ExplorePage() {
                   className="px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-neutral-50 dark:hover:bg-zinc-700 text-xs font-semibold font-geist text-zinc-700 dark:text-zinc-200 transition-colors inline-flex items-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Download .tsx</span>
+                  <span>Download .{getFileExtension(activeSnippet.language)}</span>
                 </button>
 
                 <button
