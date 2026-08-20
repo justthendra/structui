@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { FaClock, FaFire, FaStar } from "react-icons/fa";
+import { CodeHighlight, LanguageBadge, getLanguageMeta } from "@/components/CodeViewer";
 
 export default function ExplorePage() {
   const [snippets, setSnippets] = useState<any[]>([]);
@@ -190,8 +191,8 @@ export default function ExplorePage() {
                   type="button"
                   onClick={() => setSelectedCategory(cat === "All" ? "all" : cat)}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all whitespace-nowrap cursor-pointer shadow-2xs ${active
-                      ? "bg-[#202020] dark:bg-white text-white dark:text-zinc-900 shadow-xs"
-                      : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-[#202020] dark:hover:text-white border border-neutral-200/80 dark:border-zinc-800 hover:bg-neutral-50 dark:hover:bg-zinc-800"
+                    ? "bg-[#202020] dark:bg-white text-white dark:text-zinc-900 shadow-xs"
+                    : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-[#202020] dark:hover:text-white border border-neutral-200/80 dark:border-zinc-800 hover:bg-neutral-50 dark:hover:bg-zinc-800"
                     }`}
                 >
                   {cat}
@@ -329,8 +330,8 @@ export default function ExplorePage() {
                             type="button"
                             onClick={(e) => handleCopyCode(snippet.id, snippet.code, e)}
                             className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${isCopied
-                                ? "bg-emerald-600 text-white"
-                                : "bg-[#3D38E9] hover:bg-[#322DC8] text-white shadow-xs"
+                              ? "bg-emerald-600 text-white"
+                              : "bg-[#3D38E9] hover:bg-[#322DC8] text-white shadow-xs"
                               }`}
                           >
                             {isCopied ? (
@@ -500,8 +501,8 @@ export default function ExplorePage() {
                   type="button"
                   onClick={() => handleCopyCode(activeSnippet.id, activeSnippet.code)}
                   className={`px-5 py-2.5 rounded-xl text-xs font-semibold font-geist transition-all inline-flex items-center gap-2 cursor-pointer ${copiedId === activeSnippet.id
-                      ? "bg-emerald-600 text-white"
-                      : "bg-[#3D38E9] hover:bg-[#322DC8] text-white shadow-xs"
+                    ? "bg-emerald-600 text-white"
+                    : "bg-[#3D38E9] hover:bg-[#322DC8] text-white shadow-xs"
                     }`}
                 >
                   {copiedId === activeSnippet.id ? (
