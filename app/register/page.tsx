@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import ThemeDropdown from "@/components/ThemeDropdown";
 import { FaDiscord } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
 import { ArrowRight, Lock, User, Mail, AlertCircle, Sparkles } from "lucide-react";
 
 export default function RegisterPage() {
@@ -17,6 +18,23 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  // Check URL error parameter on mount
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const err = params.get("error");
+      if (err) {
+        if (err === "google_denied") setError("Google sign up was cancelled or denied.");
+        else if (err === "google_not_configured") setError("Google sign up is not yet configured on the server.");
+        else if (err === "google_token_failed" || err === "google_user_failed" || err === "google_error")
+          setError("Failed to register with Google. Please try again.");
+        else if (err === "discord_denied") setError("Discord sign up was cancelled or denied.");
+        else if (err === "discord_not_configured") setError("Discord sign up is not yet configured on the server.");
+        else setError("An authentication error occurred.");
+      }
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +61,10 @@ export default function RegisterPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = "/api/auth/google";
   };
 
   const handleDiscordLogin = () => {
@@ -89,15 +111,26 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        {/* Discord 1-Click Register Button */}
-        <button
-          type="button"
-          onClick={handleDiscordLogin}
-          className="w-full h-12 bg-[#5865F2] hover:bg-[#4752C4] active:scale-[0.99] transition-all rounded-2xl flex items-center justify-center gap-2.5 text-white font-semibold font-geist text-sm shadow-sm shadow-[#5865F2]/25 mb-5 cursor-pointer"
-        >
-          <FaDiscord className="w-5 h-5" />
-          <span>Continue with Discord</span>
-        </button>
+        {/* Social 1-Click Register Buttons */}
+        <div className="flex flex-col gap-2.5 mb-5">
+          <button
+            type="button"
+            onClick={handleGoogleLogin}
+            className="w-full h-11 bg-white hover:bg-neutral-50 dark:bg-zinc-800/80 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-neutral-200 dark:border-zinc-700 active:scale-[0.99] transition-all rounded-2xl flex items-center justify-center gap-2.5 font-semibold font-geist text-sm shadow-sm cursor-pointer"
+          >
+            <FcGoogle className="w-5 h-5" />
+            <span>Continue with Google</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleDiscordLogin}
+            className="w-full h-11 bg-[#5865F2] hover:bg-[#4752C4] active:scale-[0.99] transition-all rounded-2xl flex items-center justify-center gap-2.5 text-white font-semibold font-geist text-sm shadow-sm shadow-[#5865F2]/25 cursor-pointer"
+          >
+            <FaDiscord className="w-5 h-5" />
+            <span>Continue with Discord</span>
+          </button>
+        </div>
 
         {/* Divider */}
         <div className="flex items-center gap-3 my-5">
